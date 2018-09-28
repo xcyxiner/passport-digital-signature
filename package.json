@@ -17,7 +17,7 @@
     "type": "git",
     "url": "git://github.com/xcyxiner/passport-digital-signature.git"
   },
-  "main": "index",
+  "main": "lib/index",
   "engines": {
     "node": "0.10.x",
     "express": "0.4.x"
