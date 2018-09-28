@@ -2,6 +2,7 @@
 const express = require('express')
 var passport = require('passport')
 var bodyParser = require('body-parser');
+
 const app = express()
 var Strategy = require('../lib').Strategy
 
@@ -16,6 +17,7 @@ passport.use(new Strategy(function (token, done) {
     console.log('token', token);
     done(null, { "name": "hellokitty" });
 }));
+
 //中间件
 app.use(passport.authenticate('token-signature'));
 

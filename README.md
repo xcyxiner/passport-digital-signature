@@ -1,51 +1,55 @@
-# Passport Digital Signature
-Authenticate Using Digital Signatures
+# token-signature
+token 添加数字签名
 
 ## Install
 
-    $ npm install passport-digital-signature
+    $ npm install https://github.com/xcyxiner/passport-digital-signature.git
 
 ## Usage
 
-#### Configure Strategy
-
-The local authentication strategy authenticates users using a publicKey and a
-signature field provided in the request. The strategy requires a `verify` callback,
-which accepts these a credentials object and calls `done` providing a user.
-```js
-    passport.use(new DigitalSignatureStrategy(
-      function(credentials, done) {
-        User.findOne({ sin: credentials.sin }, function (err, user) {
-          if (err) { return done(err); }
-          if (!user) { return done(null, false); }
-          if (!user.verifyPassword(password)) { return done(null, false); }
-          return done(null, user);
-        });
-      }
-    ));
 ```
-#### Authenticate Requests
+var Strategy = require('token-signature').Strategy
 
-Use `passport.authenticate()`, specifying the `'signature'` strategy, to
-authenticate requests.
+//将body转为json
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-For example, as route middleware in an [Express](http://expressjs.com/)
-application:
-```js
-    app.post('/login',
-      passport.authenticate('digital-signature'),
-      function(req, res) {
-        res.redirect('/');
-      });
+
+//token验证
+passport.use(new Strategy(function (token, done) {
+    //token验证并返回对象实体
+    console.log('token', token);
+    done(null, { "name": "hellokitty" });
+}));
+
+//中间件
+app.use(passport.authenticate('token-signature'));
 ```
-## See Also
 
-- [Signature Extraction Middleware](https://github.com/johnhenry/signature-extract)
-- [Signature Storage Middleware](https://github.com/johnhenry/signature-store)
-- [Signature Verification Middleware](https://github.com/johnhenry/signature-verify)
+## test
 
-## Credits
-  - [John Henry](http://github.com/johnhenry)
+```
+./node_modules/mocha/bin/mocha test/reqtest.js
+```
+
+输出如下所示
+
+```
+Example app listening on port 3000!
+  get /test
+token hello
+    ✓ respond with json
+
+  post /test
+token hello
+    ✓ respond with json
+
+
+  2 passing (65ms)
+```
+
+
+
 
 ## License
 
