@@ -48,8 +48,14 @@ token hello
   2 passing (65ms)
 ```
 
+## 参考资料
 
-
+* [nodejs api实现数字签名验证](http://www.icafebolger.com/nodejs/nodeapipassportdigital.html)
+* [TOKEN+签名验证](https://www.cnblogs.com/Leo_wl/p/5982927.html)
+* [关于JWT 和Token](https://blog.csdn.net/hzlnice/article/details/80906465)
+* [App开放接口api安全性—Token签名sign的设计与实现](https://www.cnblogs.com/softidea/p/5836967.html)
+* [RESTful Api 身份认证中的安全性设计探讨](https://mengkang.net/625.html)
+* [Node JWT/jsonwebtoken 使用与原理分析](https://www.jianshu.com/p/a7882080c541)
 
 ## License
 
