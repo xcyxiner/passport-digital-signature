@@ -1,6 +1,6 @@
 {
   "name": "token-signature",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "timestamp + token + data = signature",
   "keywords": [
     "token",
@@ -24,8 +24,12 @@
     "test": "./node_modules/mocha/bin/mocha test/reqtest.js"
   },
   "dependencies": {
+    "crypto": "^1.0.1",
+    "passport-strategy": "^1.0.0",
+    "util": "^0.11.0"
+  },
+  "devDependencies": {
     "assert": "^1.4.1",
-    "bitauth": "^0.3.2",
     "body-parser": "^1.18.3",
     "crypto": "^1.0.1",
     "express": "^4.16.3",
