@@ -1,42 +1,42 @@
 # token-signature
-token 添加数字签名
+token add signature
 
 ## Install
 
-    $ npm install https://github.com/xcyxiner/passport-digital-signature.git
+    npm install token-signature
 
 ## Usage
 
 ```
 var Strategy = require('token-signature').Strategy
 
-//将body转为json
+//covert body to json
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
-//token验证,需要传递req时
+//token check by req
 passport.use(new Strategy(
     {
         passReqToCallback: true
     }, function (req, token, done) {
-        //token验证并返回对象实体,check=token检查结果，next=是否继续后续签名验证
+        //token check,check=token check result，next=continue signature handle
         done(null, {
             check: true,
             next: true
         });
     }));
 
-//token验证
+//token check
 // passport.use(new Strategy(function (token, done) {
-//     //token验证并返回对象实体,check=token检查结果，next=是否继续后续签名验证
+//     //token check,check=token check result，next=continue signature handle
 //     done(null, {
 //         check: true,
 //         next: true
 //     });
 // }));
 
-//中间件
+//express loopback middleware
 app.use(passport.authenticate('token-signature'));
 ```
 
@@ -46,7 +46,7 @@ app.use(passport.authenticate('token-signature'));
 ./node_modules/mocha/bin/mocha test/reqtest.js
 ```
 
-输出如下所示
+console log
 
 ```
 Example app listening on port 3000!
@@ -62,7 +62,7 @@ token hello
   2 passing (65ms)
 ```
 
-## 参考资料
+## link
 
 * [nodejs api实现数字签名验证](http://www.icafebolger.com/nodejs/nodeapipassportdigital.html)
 * [TOKEN+签名验证](https://www.cnblogs.com/Leo_wl/p/5982927.html)

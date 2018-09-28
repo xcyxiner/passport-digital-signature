@@ -1,15 +1,11 @@
 {
   "name": "token-signature",
   "version": "0.0.1",
-  "description": "根据时间戳timestamp、keyId和数字签名值sign",
+  "description": "timestamp + token + data = signature",
   "keywords": [
-    "passport",
-    "digital",
+    "token",
     "signature",
-    "login",
-    "auth",
-    "authentication",
-    "authorization"
+    "sign"
   ],
   "author": "xcyxiner <593091948@qq.com>",
   "homepage": "https://github.com/xcyxiner/passport-digital-signature",
@@ -21,8 +17,8 @@
   "engines": {
     "node": "0.10.x",
     "express": "0.4.x"
-  }, 
-   "scripts": {
+  },
+  "scripts": {
     "lint": "eslint .",
     "start": "node test/index.js",
     "test": "./node_modules/mocha/bin/mocha test/reqtest.js"
